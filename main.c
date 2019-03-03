@@ -36,16 +36,19 @@ void	get_functions_lens(int fd)
 	int		ln;
 	int		brack;
 	int		count;
+	int		count_func;
 
 	ln = 1;
 	func = 0;
 	brack = 0;
 	now = 0;
+	count_func = 0;
 	while (get_next_line(fd, &now) > 0)
 	{
 		go_line(now, &brack);
 		if (brack > 0)
 		{
+			count_func++;
 			count = 0;
 			while (get_next_line(fd, &now) > 0 && brack > 0)
 			{
@@ -55,7 +58,7 @@ void	get_functions_lens(int fd)
 			}
 			count--;
 			if (count > MAX_FUNCTION_LEN)
-				printf("Error: line %d\nFunction %s: have %d lines\n", func_num, func, count);
+				printf("Error: line %d\nFunction %s: have %d lines\n\n", func_num, func, count);
 		}
 		if (func != 0)
 			free(func);
@@ -66,6 +69,8 @@ void	get_functions_lens(int fd)
 
 	if (func != 0)
 		free(func);
+	if (count_func > MAX_FUNCTIONS_IN_FILE)
+		printf("\nError: file have %d functions\n", count_func);
 }
 
 void	start_norm(char *fname)

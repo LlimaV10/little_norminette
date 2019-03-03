@@ -19,8 +19,7 @@
 # endif
 # include <fcntl.h>
 
-
-
 # define MAX_LINE_LEN 80
 # define MAX_FUNCTION_LEN 25
+# define MAX_FUNCTIONS_IN_FILE 5
 #endif
