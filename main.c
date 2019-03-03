@@ -38,13 +38,14 @@ void	get_functions_lens(int fd)
 	int		count;
 	int		count_func;
 
-	ln = 1;
+	ln = 0;
 	func = 0;
 	brack = 0;
 	now = 0;
 	count_func = 0;
 	while (get_next_line(fd, &now) > 0)
 	{
+		ln++;
 		go_line(now, &brack);
 		if (brack > 0)
 		{
@@ -52,18 +53,18 @@ void	get_functions_lens(int fd)
 			count = 0;
 			while (get_next_line(fd, &now) > 0 && brack > 0)
 			{
+				ln++;
 				count++;
 				go_line(now, &brack);
-				ln++;
 			}
 			count--;
+			ln++;
 			if (count > MAX_FUNCTION_LEN)
 				printf("Error: line %d\nFunction %s: have %d lines\n\n", func_num, func, count);
 		}
 		if (func != 0)
 			free(func);
 		func = now;
-		ln++;
 		func_num = ln;
 	}
 
