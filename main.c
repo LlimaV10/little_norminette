@@ -90,6 +90,7 @@ int		main(int argc, char **argv)
 		printf("usage: my_norm filename\n");
 		return (0);
 	}
+	system(CLEAR_CONSOLE);
 	start_norm(argv[1]);
 	return (0);
 }

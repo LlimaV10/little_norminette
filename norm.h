@@ -5,7 +5,11 @@
 # include "libft/libft.h"
 
 # ifdef _APPLE_
+#  define CLEAR_CONSOLE "clear"
+# elif _linux_
+#  define CLEAR_CONSOLE "clear"
 # else
+#  define CLEAR_CONSOLE "cls"
 #  include <io.h>
 #  define open _open
 #  define close _close
@@ -14,6 +18,8 @@
 # include <sys/stat.h>
 # endif
 # include <fcntl.h>
+
+
 
 # define MAX_LINE_LEN 80
 # define MAX_FUNCTION_LEN 25
