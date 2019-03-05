@@ -1,5 +1,19 @@
 #include "norm.h"
 
+int		get_tabs(char *s)
+{
+	int		tabs;
+
+	tabs = 0;
+	while (*s)
+	{
+		if (*s == '\t')
+			tabs += TAB_SIZE - 1;
+		s++;
+	}
+	return (tabs);
+}
+
 void	get_lines_lens(int fd)
 {
 	char	*now;
@@ -9,6 +23,8 @@ void	get_lines_lens(int fd)
 	ln = 1;
 	while (get_next_line(fd, &now) > 0)
 	{
+		len = ft_strlen(now);
+		len += get_tabs(now, len);
 		if ((len = ft_strlen(now)) > MAX_LINE_LEN)
 			printf("Error: line %d have %d characters\n", ln, len);
 		free(now);
