@@ -24,7 +24,7 @@ void	get_lines_lens(int fd)
 	while (get_next_line(fd, &now) > 0)
 	{
 		len = ft_strlen(now);
-		len += get_tabs(now, len);
+		len += get_tabs(now);
 		if ((len = ft_strlen(now)) > MAX_LINE_LEN)
 			printf("Error: line %d have %d characters\n", ln, len);
 		free(now);

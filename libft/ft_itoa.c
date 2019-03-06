@@ -16,7 +16,7 @@ static char	*check2_ft_itoa(int n)
 {
 	char	*s;
 
-	if (n == -(int)2147483648)
+	if (n == -2147483648)
 	{
 		s = (char *)malloc(12 * sizeof(char));
 		s = ft_strcpy(s, "-2147483648");

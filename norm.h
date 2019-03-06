@@ -6,8 +6,9 @@
 
 # ifdef _APPLE_
 #  define CLEAR_CONSOLE "clear"
-# elif _linux_
+# elif __linux__
 #  define CLEAR_CONSOLE "clear"
+#  include <unistd.h>
 # else
 #  define CLEAR_CONSOLE "cls"
 #  include <io.h>
